@@ -1,0 +1,34 @@
+name: Deployment pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+
+jobs:
+  simple_deployment_pipeline:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+      - name: npm install
+        run: npm ci
+      - name: run Lint
+        run: npm run lint
+      - name: run build
+        run: npm run build
+      - name: heroku deploy
+        uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "create-app-98" #Must be unique in Heroku
+          heroku_email: "tamang.subash36@gmail.com"
+          healthcheck: "https://create-app-98.herokuapp.com/health"
+          checkstring: "ok"
+          delay: 5
+          
+    
+      
