@@ -24,9 +24,9 @@ jobs:
         uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "create-app-98" #Must be unique in Heroku
-          heroku_email: "tamang.subash36@gmail.com"
-          healthcheck: "https://create-app-98.herokuapp.com/health"
+          heroku_app_name: "subashbyrushil" #Must be unique in Heroku
+          heroku_email: "rushil.shakya@gmail.com"
+          healthcheck: "https://subashbyrushil.herokuapp.com/health"
           checkstring: "ok"
           delay: 5
           
